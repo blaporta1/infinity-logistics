@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1280" />
+<title>Infinity Transportation &amp; Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* INFINITY — Marketing Site (The Monolith) */
+
+:root {
+  --ink:        #0e0d0b;
+  --ink-2:      #1a1714;
+  --ink-3:      #2a2520;
+  --paper:      #f4f1ea;
+  --paper-2:    #ebe6da;
+  --paper-3:    #d9d2c0;
+  --brass:      #d4a04a;
+  --brass-deep: #a87a2e;
+  --brass-pale: #e8c787;
+  --rust:       #8a3a1a;
+  --moss:       #2f3a1f;
+  --slate:      #3a3835;
+  --rule:       rgba(14,13,11,0.12);
+  --rule-dark:  rgba(244,241,234,0.12);
+  --mute:       rgba(14,13,11,0.55);
+  --mute-dark:  rgba(244,241,234,0.55);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* Type */
+h1, h2, h3, h4 { margin: 0; font-family: 'Manrope', sans-serif; letter-spacing: -0.04em; line-height: 0.95; font-weight: 800; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--brass-deep); }
+.eyebrow-dark { color: var(--brass); }
+.lead { font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; line-height: 1.4; letter-spacing: -0.005em; }
+.body { font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s ease; text-decoration: none; }
+.btn-primary { background: var(--brass); color: var(--ink); }
+.btn-primary:hover { background: var(--brass-pale); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--paper); border: 1px solid var(--rule-dark); }
+.btn-ghost:hover { border-color: var(--brass); color: var(--brass); }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { background: var(--ink-3); }
+.btn-ghost-ink { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+.btn-ghost-ink:hover { border-color: var(--brass); color: var(--brass-deep); }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(14,13,11,0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule-dark); }
+.nav-inner { max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; background: none; border: none; padding: 0; }
+.nav-logo .word { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.04em; color: var(--paper); }
+.nav-links { display: flex; gap: 32px; }
+.nav-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(244,241,234,0.7); cursor: pointer; transition: color 0.15s; background: none; border: none; padding: 0; }
+.nav-link:hover, .nav-link.active { color: var(--brass); }
+.nav-link:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+.nav-cta { display: flex; gap: 12px; align-items: center; }
+
+/* Footer */
+.footer { background: var(--ink); color: var(--paper); padding: 80px 32px 40px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--rule-dark); }
+.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--brass); margin-bottom: 18px; font-weight: 600; line-height: 1; }
+.footer-col a { display: block; color: rgba(244,241,234,0.7); font-size: 14px; padding: 6px 0; text-decoration: none; cursor: pointer; transition: color 0.15s; font-family: 'Manrope', sans-serif; }
+.footer-col a:hover { color: var(--brass); }
+.footer-bot { display: flex; justify-content: space-between; padding-top: 32px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,241,234,0.5); }
+
+/* Section primitives */
+.section { padding: 120px 32px; }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-dark { background: var(--ink); color: var(--paper); }
+.section-cream { background: var(--paper); }
+.section-stone { background: var(--paper-2); }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; min-height: 720px; display: flex; align-items: center; }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(212,160,74,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(212,160,74,0.04) 1px, transparent 1px); background-size: 80px 80px; }
+.hero-glow { position: absolute; right: -200px; top: 50%; transform: translateY(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,160,74,0.12) 0%, transparent 60%); pointer-events: none; }
+.hero-inner { max-width: 1280px; margin: 0 auto; padding: 80px 32px; position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; }
+
+/* Card */
+.card { background: var(--paper); border: 1px solid var(--rule); padding: 32px; transition: all 0.15s; }
+.card-dark { background: rgba(244,241,234,0.04); border: 1px solid rgba(244,241,234,0.12); color: var(--paper); }
+.card:hover { border-color: var(--brass); transform: translateY(-2px); }
+
+/* Tracking widget */
+.track-widget { background: var(--ink); border: 1px solid var(--rule-dark); padding: 28px; }
+.track-input-row { display: flex; gap: 0; margin-top: 14px; }
+.track-input { flex: 1; background: rgba(244,241,234,0.06); border: 1px solid rgba(244,241,234,0.15); color: var(--paper); padding: 16px 18px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.18em; outline: none; }
+.track-input:focus { border-color: var(--brass); }
+.track-input::placeholder { color: rgba(244,241,234,0.35); }
+
+/* Form */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); }
+.input { padding: 14px 16px; border: 1px solid var(--rule); background: var(--paper); font-family: 'Manrope', sans-serif; font-size: 15px; outline: none; transition: border-color 0.15s; width: 100%; }
+.input:focus { border-color: var(--ink); }
+.input-dark { background: rgba(244,241,234,0.05); border: 1px solid rgba(244,241,234,0.15); color: var(--paper); padding: 14px 16px; font-family: 'Manrope', sans-serif; font-size: 15px; outline: none; transition: border-color 0.15s; width: 100%; }
+.input-dark:focus { border-color: var(--brass); }
+
+/* Stats */
+.stat-num { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 64px; letter-spacing: -0.05em; line-height: 0.9; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); margin-top: 8px; }
+
+/* Focus visible */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes truckRoll { 0% { transform: translateX(-20px); } 50% { transform: translateX(20px); } 100% { transform: translateX(-20px); } }
+@keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.4); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dash { to { stroke-dashoffset: -100; } }
+
+.fade-up { animation: fadeUp 0.6s ease-out backwards; }
+
+/* Utility */
+.rule-brass { width: 40px; height: 2px; background: var(--brass); }
+.divider { height: 1px; background: var(--rule); }
+.divider-dark { height: 1px; background: var(--rule-dark); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .section { padding: 60px 20px; }
+  .hero-inner { padding: 60px 20px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ── MARK (logo SVG) ── */
+const Mark = ({ size = 56, stroke = 'var(--paper)', accent = 'var(--brass)', strokeWidth = 6 }) => (
+  <svg viewBox="0 0 96 64" width={size} height={size * 64 / 96} fill="none" style={{ display: 'block' }}>
+    <path
+      d="M16 32 C 16 16, 40 16, 48 32 C 56 48, 80 48, 80 32 C 80 16, 56 16, 48 32 C 40 48, 16 48, 16 32 Z"
+      stroke={stroke} strokeWidth={strokeWidth} strokeLinejoin="round"
+    />
+    <path d="M62 22 L 78 32 L 62 42 Z" fill={accent} />
+  </svg>
+);
+
+/* ── NAV ── */
+const Nav = ({ route, setRoute }) => {
+  const links = [
+    ['home', 'Home'],
+    ['services', 'Services'],
+    ['network', 'Network'],
+    ['tracking', 'Track'],
+    ['about', 'About'],
+    ['careers', 'Careers'],
+  ];
+  return (
+    <nav className="nav">
+      <div className="nav-inner">
+        <button className="nav-logo" onClick={() => setRoute('home')} aria-label="Infinity Logistics — Home">
+          <Mark size={36} stroke="var(--paper)" accent="var(--brass)" strokeWidth={5} />
+          <span className="word">INFINITY</span>
+        </button>
+        <div className="nav-links" role="navigation" aria-label="Primary navigation">
+          {links.map(([k, l]) => (
+            <button
+              key={k}
+              className={'nav-link' + (route === k ? ' active' : '')}
+              onClick={() => setRoute(k)}
+              aria-current={route === k ? 'page' : undefined}
+            >
+              {l}
+            </button>
+          ))}
+        </div>
+        <div className="nav-cta">
+          <button className="nav-link" onClick={() => setRoute('contact')}>Contact</button>
+          <button className="btn btn-primary" onClick={() => setRoute('quote')}>Get a quote →</button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+/* ── FOOTER ── */
+const Footer = ({ setRoute }) => (
+  <footer className="footer">
+    <div className="footer-inner">
+      <div className="footer-top">
+        <div className="footer-col">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
+            <Mark size={48} stroke="var(--paper)" accent="var(--brass)" strokeWidth={5} />
+            <div>
+              <div style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 22, letterSpacing: '-0.04em', color: 'var(--paper)' }}>INFINITY</div>
+              <div className="mono" style={{ fontSize: 9, color: 'rgba(244,241,234,0.55)', marginTop: 2 }}>TRANSPORTATION · LOGISTICS</div>
+            </div>
+          </div>
+          <p style={{ fontFamily: 'Fraunces', fontSize: 16, lineHeight: 1.5, color: 'rgba(244,241,234,0.7)', maxWidth: 320, margin: 0 }}>
+            Move it, on time, without drama. Forty-three trucks, three port relationships.
+          </p>
+        </div>
+        <div className="footer-col">
+          <h4>Services</h4>
+          <a onClick={() => setRoute('services')}>Long-haul</a>
+          <a onClick={() => setRoute('services')}>Cross-dock</a>
+          <a onClick={() => setRoute('services')}>Last-mile</a>
+          <a onClick={() => setRoute('services')}>Drayage</a>
+        </div>
+        <div className="footer-col">
+          <h4>Company</h4>
+          <a onClick={() => setRoute('about')}>About</a>
+          <a onClick={() => setRoute('careers')}>Careers</a>
+          <a onClick={() => setRoute('case')}>Case study</a>
+          <a onClick={() => setRoute('contact')}>Contact</a>
+        </div>
+        <div className="footer-col">
+          <h4>Operations</h4>
+          <a>1820 Port Terminal Dr</a>
+          <a>Jacksonville FL 32226</a>
+          <a href="tel:+19045550142">+1 904 555 0142</a>
+          <a href="mailto:dispatch@infinity-tl.com">dispatch@infinity-tl.com</a>
+        </div>
+      </div>
+      <div className="footer-bot">
+        <span>© 2026 Infinity Transportation &amp; Logistics LLC</span>
+        <span>DOT #3845-921 · MC #149-2273</span>
+      </div>
+    </div>
+  </footer>
+);
+
+/* ── HOME ── */
+const Home = ({ setRoute }) => {
+  const [trackId, setTrackId] = useState('');
+
+  return (
+    <div>
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-grid-bg" aria-hidden="true"></div>
+        <div className="hero-glow" aria-hidden="true"></div>
+        <div className="hero-inner">
+          <div className="fade-up">
+            <div className="eyebrow eyebrow-dark" style={{ marginBottom: 28 }}>EST. 2008 · JACKSONVILLE FL</div>
+            <h1 style={{ fontSize: 92, color: 'var(--paper)', marginBottom: 32 }}>
+              Move it,<br />on time,<br /><span style={{ color: 'var(--brass)' }}>without drama.</span>
+            </h1>
+            <p className="lead" style={{ color: 'rgba(244,241,234,0.75)', maxWidth: 520, marginBottom: 40 }}>
+              Forty-three trucks. Three port relationships. The same dispatchers your account had last quarter, this quarter, and next quarter.
+            </p>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <button className="btn btn-primary" onClick={() => setRoute('quote')}>Request a quote →</button>
+              <button className="btn btn-ghost" onClick={() => setRoute('services')}>See services</button>
+            </div>
+          </div>
+          <div className="track-widget fade-up" style={{ animationDelay: '0.15s' }}>
+            <div className="eyebrow eyebrow-dark" style={{ fontSize: 10 }}>TRACK A SHIPMENT</div>
+            <div style={{ fontFamily: 'Fraunces', fontSize: 24, color: 'var(--paper)', marginTop: 12, lineHeight: 1.25 }}>
+              Live position, hourly pings, signed BOL.
+            </div>
+            <div className="track-input-row">
+              <input
+                className="track-input"
+                placeholder="INF-2026-XXXXXX"
+                value={trackId}
+                onChange={e => setTrackId(e.target.value.toUpperCase())}
+                aria-label="Tracking ID"
+              />
+              <button className="btn btn-primary" onClick={() => { if (trackId) setRoute('tracking'); }}>Track →</button>
+            </div>
+            <div className="mono" style={{ fontSize: 10, color: 'rgba(244,241,234,0.45)', marginTop: 14 }}>SAMPLE: INF-2026-04472</div>
+          </div>
+        </div>
+      </section>
+
+      {/* CUSTOMER MARQUEE */}
+      <div style={{ background: 'var(--ink)', borderTop: '1px solid var(--rule-dark)', borderBottom: '1px solid var(--rule-dark)', padding: '20px 0', overflow: 'hidden' }} aria-label="Customers">
+        <div style={{ display: 'flex', gap: 60, animation: 'truckRoll 8s ease-in-out infinite', justifyContent: 'center', whiteSpace: 'nowrap' }} className="mono">
+          {['CARGILL', 'JM FAMILY', 'LANDSTAR', 'GEORGIA-PACIFIC', 'CSX INTERMODAL', 'ANHEUSER-BUSCH', 'PUBLIX SUPER MARKETS'].map(c => (
+            <span key={c} style={{ fontSize: 12, color: 'rgba(244,241,234,0.4)', letterSpacing: '0.32em' }}>{c}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* STATS */}
+      <section className="section section-cream">
+        <div className="section-inner">
+          <div className="eyebrow" style={{ marginBottom: 16 }}>BY THE NUMBERS · 2025 OPERATING YEAR</div>
+          <h2 style={{ fontSize: 64, maxWidth: 720, marginBottom: 80 }}>Eighteen years of moving freight without inventing new excuses.</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)' }}>
+            {[
+              ['43', 'Trucks in fleet', 'Owned, not leased'],
+              ['98.6%', 'On-time pickup', '15-min window'],
+              ['1.2M', 'Loaded miles', 'Per year'],
+              ['18', 'Years in business', 'Same family ownership'],
+            ].map(([n, l, s], i) => (
+              <div key={i} style={{ padding: '40px 32px', borderRight: i < 3 ? '1px solid var(--rule)' : 'none' }}>
+                <div className="stat-num">{n}</div>
+                <div className="stat-label">{l}</div>
+                <div style={{ fontFamily: 'Fraunces', fontSize: 14, color: 'var(--mute)', marginTop: 6 }}>{s}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES PREVIEW */}
+      <section className="section section-stone">
+        <div className="section-inner">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 16 }}>WHAT WE MOVE</div>
+              <h2 style={{ fontSize: 56, maxWidth: 600 }}>Four service lines. One operating standard.</h2>
+            </div>
+            <button className="btn btn-ink" onClick={() => setRoute('services')}>All services →</button>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+            {[
+              ['01', 'Long-haul dry van', "Coast-to-coast on dedicated lanes. 53' trailers, dual drivers on time-sensitive freight, ELD-tracked end to end.", 'FROM $2.40/MI'],
+              ['02', 'Cross-dock & consolidation', '120,000 sq ft Jacksonville facility. LTL inbound, FTL outbound. We sort, you save a leg.', '24-HR TURN'],
+              ['03', 'Last-mile distribution', 'Southeast metros from a single dispatcher. Box trucks and sprinters, white-glove on request.', '7 STATES'],
+              ['04', 'Port drayage', 'JAXPORT, Savannah, Charleston. Bonded, chassis pool access, customs partner on call.', '3 PORTS'],
+            ].map(([n, t, d, m], i) => (
+              <div
+                key={i}
+                className="card"
+                style={{ padding: 40, cursor: 'pointer' }}
+                onClick={() => setRoute('services')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e => e.key === 'Enter' && setRoute('services')}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 32 }}>
+                  <div className="mono" style={{ fontSize: 11, color: 'var(--brass-deep)' }}>SERVICE {n}</div>
+                  <div className="mono" style={{ fontSize: 10, color: 'var(--mute)' }}>{m}</div>
+                </div>
+                <h3 style={{ fontSize: 32, marginBottom: 18 }}>{t}</h3>
+                <p className="body" style={{ marginBottom: 24 }}>{d}</p>
+                <div className="rule-brass"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NETWORK MAP TEASER */}
+      <section className="section section-dark">
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'center' }}>
+          <div>
+            <div className="eyebrow eyebrow-dark" style={{ marginBottom: 16 }}>THE NETWORK</div>
+            <h2 style={{ fontSize: 56, color: 'var(--paper)', marginBottom: 28 }}>Southeast spine, national reach.</h2>
+            <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', marginBottom: 32 }}>
+              Hub in Jacksonville. Drop yards in Atlanta, Memphis, and Charlotte. Partner network covers 48 contiguous states with same-week capacity.
+            </p>
+            <button className="btn btn-primary" onClick={() => setRoute('network')}>Explore the map →</button>
+          </div>
+          <div style={{ position: 'relative', aspectRatio: '4/3', background: 'rgba(244,241,234,0.03)', border: '1px solid var(--rule-dark)' }} aria-hidden="true">
+            <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%' }}>
+              <path d="M40 120 L 80 90 L 140 80 L 200 75 L 270 78 L 340 88 L 360 110 L 355 150 L 340 180 L 310 210 L 270 225 L 220 230 L 170 225 L 130 215 L 90 195 L 60 170 L 40 145 Z"
+                fill="rgba(244,241,234,0.04)" stroke="rgba(244,241,234,0.18)" strokeWidth="1" />
+              <line x1="280" y1="200" x2="240" y2="170" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 3s linear infinite' }} />
+              <line x1="280" y1="200" x2="200" y2="150" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 4s linear infinite' }} />
+              <line x1="280" y1="200" x2="150" y2="180" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 5s linear infinite' }} />
+              <line x1="280" y1="200" x2="100" y2="140" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 6s linear infinite' }} />
+              {[[280,200,'JAX',true],[240,170,'ATL'],[200,150,'MEM'],[260,170,'CHA'],[150,180,'DAL'],[100,140,'PHX'],[330,140,'NYC']].map(([x,y,l,hub],i) => (
+                <g key={i}>
+                  <circle cx={x} cy={y} r={hub ? 6 : 3} fill="var(--brass)" />
+                  {hub && <circle cx={x} cy={y} r="6" fill="none" stroke="var(--brass)" strokeWidth="1" style={{ animation: 'pulseDot 2s ease-in-out infinite' }} />}
+                  <text x={x} y={y - 12} fill={hub ? 'var(--brass)' : 'rgba(244,241,234,0.6)'} fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">{l}</text>
+                </g>
+              ))}
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIAL */}
+      <section className="section section-cream">
+        <div className="section-inner" style={{ maxWidth: 920 }}>
+          <div className="eyebrow" style={{ marginBottom: 32 }}>FROM A CUSTOMER · 11 YEARS</div>
+          <blockquote style={{ fontFamily: 'Fraunces', fontSize: 44, lineHeight: 1.25, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>
+            "We switched a third of our southeast volume to Infinity in 2014 and never moved it back. The thing you don't appreciate until you've left them is that they answer the phone."
+          </blockquote>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 48, paddingTop: 32, borderTop: '1px solid var(--rule)', flexWrap: 'wrap' }}>
+            <div style={{ width: 56, height: 56, background: 'var(--paper-3)', borderRadius: '50%', flexShrink: 0 }} aria-hidden="true"></div>
+            <div>
+              <div style={{ fontFamily: 'Manrope', fontWeight: 700, fontSize: 16 }}>Linda Hartwell</div>
+              <div className="mono" style={{ fontSize: 10, color: 'var(--mute)', marginTop: 4 }}>VP LOGISTICS · COASTAL PAPER &amp; PACKAGING</div>
+            </div>
+            <button className="btn btn-ink" style={{ marginLeft: 'auto' }} onClick={() => setRoute('case')}>Read case study →</button>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="section section-dark" style={{ padding: '100px 32px' }}>
+        <div className="section-inner" style={{ textAlign: 'center', maxWidth: 800 }}>
+          <h2 style={{ fontSize: 72, color: 'var(--paper)', marginBottom: 28 }}>Ready to move freight?</h2>
+          <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', marginBottom: 40 }}>
+            Quote in under 4 hours. Pickup as early as tomorrow morning.
+          </p>
+          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="btn btn-primary" onClick={() => setRoute('quote')}>Request a quote →</button>
+            <button className="btn btn-ghost" onClick={() => setRoute('contact')}>Talk to dispatch</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── SERVICES ── */
+const Services = ({ setRoute }) => {
+  const services = [
+    {
+      n: '01', t: 'Long-haul dry van',
+      lead: "53-foot trailers running coast-to-coast on dedicated and spot lanes.",
+      detail: "Owned fleet of 43 tractors, average age 3.2 years. ELD-tracked, all drivers W-2 employees with full benefits — no driver churn surprises mid-lane. Dual-driver teams available on time-critical freight.",
+      bullets: ["53' dry van trailers (28 in fleet)", 'Reefer capable on 8 trailers', 'Team driver service available', 'Standard SLA: 98.6% on-time'],
+      price: 'FROM $2.40/MI',
+    },
+    {
+      n: '02', t: 'Cross-dock & consolidation',
+      lead: '120,000 sq ft Jacksonville facility, 24-hour turn standard.',
+      detail: 'Twelve dock doors, dedicated forklift crew on two shifts. We sort LTL inbound and rebuild as FTL outbound, or hold for scheduled pickup. Camera-monitored, climate-zoned for sensitive goods.',
+      bullets: ['12 dock doors · 24-hr turn', '120,000 sq ft secured', 'WMS integration via EDI 856', 'Climate zone for sensitive freight'],
+      price: '24-HR TURN',
+    },
+    {
+      n: '03', t: 'Last-mile distribution',
+      lead: 'Southeast metros, single dispatcher, white-glove on request.',
+      detail: "Coverage across FL, GA, AL, SC, NC, TN, and southern VA. Mix of 26' box trucks and Sprinter vans. Liftgate on every box truck. White-glove service includes inside delivery, debris removal, and basic assembly.",
+      bullets: ['7 states from JAX hub', '14 box trucks · 9 sprinters', 'White-glove available', 'Photo + signature POD'],
+      price: '7 STATES',
+    },
+    {
+      n: '04', t: 'Port drayage',
+      lead: 'JAXPORT, Savannah, Charleston. Bonded, chassis-pool, customs-ready.',
+      detail: 'Sixteen years of port experience. Bonded carrier status, established chassis pool relationships, and a customs broker on call. We handle import flips, export pre-pulls, and bonded moves to inland CFS.',
+      bullets: ['JAXPORT · Savannah · Charleston', 'Bonded carrier (C-TPAT)', 'Chassis pool access', 'Customs broker partnership'],
+      price: '3 PORTS',
+    },
+  ];
+
+  return (
+    <div>
+      <section className="section section-dark" style={{ padding: '100px 32px 80px' }}>
+        <div className="section-inner">
+          <div className="eyebrow eyebrow-dark" style={{ marginBottom: 24 }}>SERVICES</div>
+          <h1 style={{ fontSize: 88, color: 'var(--paper)', maxWidth: 1000 }}>Four services. One number to call.</h1>
+          <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', maxWidth: 720, marginTop: 32 }}>
+            Whether you need to move a single trailer next Tuesday or sign a five-year dedicated lane, the same dispatcher answers the phone and the same standards apply.
+          </p>
+        </div>
+      </section>
+
+      {services.map((s, i) => (
+        <section key={i} className={'section ' + (i % 2 === 0 ? 'section-cream' : 'section-stone')}>
+          <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }}>
+            <div style={{ position: 'sticky', top: 120 }}>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--brass-deep)', marginBottom: 16 }}>SERVICE {s.n}</div>
+              <h2 style={{ fontSize: 56, marginBottom: 24 }}>{s.t}</h2>
+              <p className="lead" style={{ marginBottom: 32 }}>{s.lead}</p>
+              <div className="rule-brass" style={{ marginBottom: 16 }}></div>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--mute)' }}>{s.price}</div>
+            </div>
+            <div>
+              <p className="body" style={{ fontSize: 18, lineHeight: 1.7, marginBottom: 40 }}>{s.detail}</p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                {s.bullets.map((b, j) => (
+                  <div key={j} style={{ padding: '20px 0', borderTop: '1px solid var(--rule)', display: 'flex', gap: 14 }}>
+                    <div style={{ width: 8, height: 8, background: 'var(--brass)', marginTop: 6, flexShrink: 0 }} aria-hidden="true"></div>
+                    <div className="body" style={{ fontSize: 15 }}>{b}</div>
+                  </div>
+                ))}
+              </div>
+              <button className="btn btn-ink" style={{ marginTop: 40 }} onClick={() => setRoute('quote')}>Quote this service →</button>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <section className="section section-dark">
+        <div className="section-inner" style={{ textAlign: 'center', maxWidth: 720 }}>
+          <h2 style={{ fontSize: 56, color: 'var(--paper)', marginBottom: 28 }}>Need something custom?</h2>
+          <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', marginBottom: 40 }}>
+            Dedicated lanes, project cargo, expedited — our dispatcher will tell you in plain English whether we can do it.
+          </p>
+          <button className="btn btn-primary" onClick={() => setRoute('contact')}>Talk to dispatch →</button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── NETWORK ── */
+const Network = ({ setRoute }) => {
+  const [hover, setHover] = useState(null);
+  const cities = [
+    { x: 280, y: 200, name: 'Jacksonville', code: 'JAX', hub: 'PRIMARY HUB', detail: '120k sq ft · 12 docks · 43 trucks' },
+    { x: 245, y: 175, name: 'Atlanta', code: 'ATL', hub: 'DROP YARD', detail: '24-hr swap point · 80 trailer capacity' },
+    { x: 215, y: 155, name: 'Memphis', code: 'MEM', hub: 'DROP YARD', detail: 'Cross-river relay · 48 trailer capacity' },
+    { x: 270, y: 175, name: 'Charlotte', code: 'CLT', hub: 'DROP YARD', detail: 'Carolinas hub · 56 trailer capacity' },
+    { x: 305, y: 195, name: 'Savannah', code: 'SAV', hub: 'PORT', detail: 'Drayage · bonded · chassis pool' },
+    { x: 290, y: 215, name: 'Charleston', code: 'CHS', hub: 'PORT', detail: 'Drayage · bonded · same-day flips' },
+    { x: 165, y: 195, name: 'Dallas', code: 'DAL', hub: 'PARTNER', detail: 'Long-haul interchange' },
+    { x: 110, y: 165, name: 'Phoenix', code: 'PHX', hub: 'PARTNER', detail: 'Western relay point' },
+    { x: 335, y: 130, name: 'New York', code: 'NYC', hub: 'PARTNER', detail: 'Northeast deliveries' },
+    { x: 70, y: 140, name: 'Los Angeles', code: 'LAX', hub: 'PARTNER', detail: 'West coast freight + port' },
+  ];
+
+  return (
+    <div>
+      <section className="section section-dark" style={{ padding: '100px 32px 60px' }}>
+        <div className="section-inner">
+          <div className="eyebrow eyebrow-dark" style={{ marginBottom: 24 }}>THE NETWORK</div>
+          <h1 style={{ fontSize: 88, color: 'var(--paper)', maxWidth: 900 }}>Southeast spine.<br />National reach.</h1>
+        </div>
+      </section>
+
+      <section style={{ background: 'var(--ink)', padding: '40px 32px 80px' }}>
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 60 }}>
+          <div style={{ position: 'relative', background: 'rgba(244,241,234,0.02)', border: '1px solid var(--rule-dark)', aspectRatio: '4/3' }} aria-label="Network map">
+            <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%' }}>
+              <path d="M40 120 L 80 90 L 140 80 L 200 75 L 270 78 L 340 88 L 360 110 L 355 150 L 340 180 L 310 210 L 270 225 L 220 230 L 170 225 L 130 215 L 90 195 L 60 170 L 40 145 Z"
+                fill="rgba(244,241,234,0.04)" stroke="rgba(244,241,234,0.18)" strokeWidth="1" />
+              {cities.map((c, i) => cities.slice(i + 1).map((d, j) => (c.hub === 'PRIMARY HUB' || d.hub === 'PRIMARY HUB') && (
+                <line key={`${i}-${j}`} x1={c.x} y1={c.y} x2={d.x} y2={d.y}
+                  stroke="var(--brass)" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="3 3" />
+              )))}
+              {cities.map((c, i) => (
+                <g key={i} style={{ cursor: 'pointer' }} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}>
+                  <circle cx={c.x} cy={c.y} r={c.hub === 'PRIMARY HUB' ? 7 : 4} fill="var(--brass)" />
+                  {c.hub === 'PRIMARY HUB' && (
+                    <circle cx={c.x} cy={c.y} r="12" fill="none" stroke="var(--brass)" strokeWidth="1.5" strokeOpacity="0.5"
+                      style={{ animation: 'pulseDot 2s ease-in-out infinite' }} />
+                  )}
+                  <text x={c.x} y={c.y - 14}
+                    fill={hover === i ? 'var(--brass)' : 'rgba(244,241,234,0.7)'}
+                    fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">
+                    {c.code}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {cities.map((c, i) => (
+              <div
+                key={i}
+                onMouseEnter={() => setHover(i)}
+                onMouseLeave={() => setHover(null)}
+                style={{
+                  padding: '14px 18px',
+                  border: '1px solid',
+                  borderColor: hover === i ? 'var(--brass)' : 'rgba(244,241,234,0.12)',
+                  background: hover === i ? 'rgba(212,160,74,0.08)' : 'transparent',
+                  transition: 'all 0.15s',
+                  cursor: 'pointer',
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <div style={{ fontFamily: 'Manrope', fontWeight: 700, fontSize: 15, color: 'var(--paper)' }}>{c.name}</div>
+                  <div className="mono" style={{ fontSize: 9, color: 'var(--brass)' }}>{c.hub}</div>
+                </div>
+                <div className="body" style={{ fontSize: 13, color: 'rgba(244,241,234,0.6)', marginTop: 4 }}>{c.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-cream">
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }}>
+          {[
+            ['48', 'Contiguous states', 'Same-week capacity to anywhere DOT-reachable.'],
+            ['7', 'Owned facilities', 'Hub plus six drop yards across the southeast.'],
+            ['200+', 'Vetted partners', "Carriers we've worked with for 5+ years on average."],
+          ].map(([n, l, d], i) => (
+            <div key={i}>
+              <div className="stat-num">{n}</div>
+              <div className="stat-label">{l}</div>
+              <p className="body" style={{ marginTop: 14 }}>{d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── TRACKING ── */
+const Tracking = ({ setRoute }) => {
+  const [id, setId] = useState('INF-2026-04472');
+  const events = [
+    { t: '06:14', d: 'Apr 28', loc: 'Macon, GA', label: 'In transit', detail: 'I-75 N · 412 mi remaining', live: true },
+    { t: '23:48', d: 'Apr 27', loc: 'Valdosta, GA', label: 'Driver swap', detail: 'Team driver handoff at Pilot 442' },
+    { t: '17:02', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Departed hub', detail: 'Sealed trailer #INF-T2241' },
+    { t: '14:30', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Picked up', detail: 'Coastal Paper · Dock 7 · BOL signed' },
+    { t: '08:00', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Pickup scheduled', detail: '14:00–14:30 window' },
+  ];
+
+  return (
+    <div>
+      <section className="section section-dark" style={{ padding: '80px 32px 40px' }}>
+        <div className="section-inner">
+          <div className="eyebrow eyebrow-dark" style={{ marginBottom: 16 }}>SHIPMENT TRACKING</div>
+          <div style={{ display: 'flex', gap: 0, maxWidth: 720 }}>
+            <input
+              className="input-dark"
+              style={{ flex: 1, fontFamily: 'JetBrains Mono', letterSpacing: '0.15em' }}
+              value={id}
+              onChange={e => setId(e.target.value.toUpperCase())}
+              aria-label="Tracking ID"
+            />
+            <button className="btn btn-primary">Track →</button>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: 'var(--ink)', padding: '20px 32px 80px' }}>
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 40 }}>
+          {/* Shipment card */}
+          <div className="card-dark" style={{ padding: 32 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 28, flexWrap: 'wrap', gap: 16 }}>
+              <div>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--brass)' }}>SHIPMENT {id}</div>
+                <div style={{ fontFamily: 'Manrope', fontWeight: 700, fontSize: 24, color: 'var(--paper)', marginTop: 6 }}>Coastal Paper → Cargill Memphis</div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 14px', background: 'rgba(212,160,74,0.15)', border: '1px solid var(--brass)' }}>
+                <div style={{ width: 8, height: 8, background: 'var(--brass)', borderRadius: '50%', animation: 'pulseDot 1.5s ease-in-out infinite' }} aria-hidden="true"></div>
+                <span className="mono" style={{ fontSize: 10, color: 'var(--brass)' }}>IN TRANSIT</span>
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, padding: '20px 0', borderTop: '1px solid var(--rule-dark)', borderBottom: '1px solid var(--rule-dark)' }}>
+              {[['ORIGIN', 'Jacksonville FL'], ['DESTINATION', 'Memphis TN'], ['ETA', 'Apr 28 · 14:30'], ['DRIVER', 'M. Halloran']].map(([l, v], i) => (
+                <div key={i} style={{ paddingRight: i < 3 ? 16 : 0 }}>
+                  <div className="mono" style={{ fontSize: 9, color: 'rgba(244,241,234,0.5)' }}>{l}</div>
+                  <div style={{ fontFamily: 'Manrope', fontWeight: 600, fontSize: 14, color: 'var(--paper)', marginTop: 6 }}>{v}</div>
+                </div>
+              ))}
+            </div>
+            {/* Route SVG */}
+            <div style={{ position: 'relative', height: 200, marginTop: 32, background: 'rgba(244,241,234,0.02)', border: '1px solid var(--rule-dark)' }} aria-label="Route map">
+              <svg viewBox="0 0 400 200" style={{ width: '100%', height: '100%' }}>
+                <line x1="60" y1="150" x2="340" y2="60" stroke="var(--brass)" strokeWidth="2" strokeDasharray="6 4" />
+                <line x1="60" y1="150" x2="180" y2="110" stroke="var(--brass)" strokeWidth="3" />
+                <circle cx="60" cy="150" r="6" fill="var(--paper)" />
+                <circle cx="340" cy="60" r="6" fill="none" stroke="var(--paper)" strokeWidth="2" />
+                <circle cx="180" cy="110" r="8" fill="var(--brass)" />
+                <circle cx="180" cy="110" r="16" fill="none" stroke="var(--brass)" strokeWidth="1.5" strokeOpacity="0.5"
+                  style={{ animation: 'pulseDot 1.5s ease-in-out infinite' }} />
+                <text x="60" y="172" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">JAX</text>
+                <text x="340" y="50" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">MEM</text>
+                <text x="180" y="98" fill="var(--brass)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">TRUCK · MACON</text>
+              </svg>
+            </div>
+          </div>
+
+          {/* Event log */}
+          <div className="card-dark" style={{ padding: 32 }}>
+            <div className="mono" style={{ fontSize: 10, color: 'var(--brass)', marginBottom: 20 }}>EVENT LOG</div>
+            <div>
+              {events.map((e, i) => (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '60px 24px 1fr', gap: 12, padding: '14px 0', borderTop: i ? '1px solid var(--rule-dark)' : 'none', alignItems: 'start' }}>
+                  <div className="mono" style={{ fontSize: 10, color: 'rgba(244,241,234,0.5)', lineHeight: 1.5 }}>
+                    {e.t}<br />{e.d}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 2 }}>
+                    <div style={{
+                      width: 10, height: 10, borderRadius: '50%',
+                      background: e.live ? 'var(--brass)' : 'rgba(244,241,234,0.3)',
+                      animation: e.live ? 'pulseDot 1.5s ease-in-out infinite' : 'none',
+                    }}></div>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'Manrope', fontWeight: 600, fontSize: 14, color: 'var(--paper)' }}>{e.label}</div>
+                    <div className="body" style={{ fontSize: 12, color: 'rgba(244,241,234,0.6)', marginTop: 2 }}>{e.loc} · {e.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── QUOTE ── */
+const Quote = ({ setRoute }) => {
+  const [step, setStep] = useState(1);
+  const [data, setData] = useState({ service: 'long-haul', origin: '', dest: '', weight: '', pickup: '', name: '', email: '', company: '', phone: '' });
+  const set = (k, v) => setData(d => ({ ...d, [k]: v }));
+
+  const stepTitles = { 1: 'What are we moving?', 2: 'Where, when, how heavy?', 3: 'Who are we sending the quote to?', 4: 'Quote received.' };
+
+  return (
+    <div>
+      <section className="section section-cream" style={{ padding: '80px 32px 40px' }}>
+        <div className="section-inner" style={{ maxWidth: 880 }}>
+          {step < 4 && <div className="eyebrow" style={{ marginBottom: 16 }}>STEP {step} OF 3</div>}
+          <h1 style={{ fontSize: 64, marginBottom: 16 }}>{stepTitles[step]}</h1>
+          {step < 4 && (
+            <div style={{ display: 'flex', gap: 8, marginTop: 32 }} role="progressbar" aria-valuenow={step} aria-valuemin={1} aria-valuemax={3}>
+              {[1, 2, 3].map(s => (
+                <div key={s} style={{ flex: 1, height: 4, background: step >= s ? 'var(--brass)' : 'var(--paper-3)', transition: 'background 0.3s' }}></div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section style={{ background: 'var(--paper)', padding: '40px 32px 120px' }}>
+        <div className="section-inner" style={{ maxWidth: 880 }}>
+
+          {step === 1 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+              {[
+                ['long-haul', 'Long-haul dry van', "53' trailer · coast to coast"],
+                ['cross-dock', 'Cross-dock', '120k sq ft · 24-hr turn'],
+                ['last-mile', 'Last-mile', '7 states · liftgate'],
+                ['drayage', 'Port drayage', 'JAX · SAV · CHS'],
+              ].map(([k, t, d]) => (
+                <button
+                  key={k}
+                  onClick={() => set('service', k)}
+                  className="card"
+                  style={{
+                    textAlign: 'left', padding: 32, cursor: 'pointer',
+                    borderColor: data.service === k ? 'var(--ink)' : 'var(--rule)',
+                    background: data.service === k ? 'var(--ink)' : 'var(--paper)',
+                    color: data.service === k ? 'var(--paper)' : 'var(--ink)',
+                    transform: 'none',
+                  }}
+                  aria-pressed={data.service === k}
+                >
+                  <div className="mono" style={{ fontSize: 10, color: data.service === k ? 'var(--brass)' : 'var(--brass-deep)', marginBottom: 14 }}>SERVICE</div>
+                  <div style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 26, letterSpacing: '-0.02em', marginBottom: 8 }}>{t}</div>
+                  <div className="body" style={{ fontSize: 14, color: data.service === k ? 'rgba(244,241,234,0.7)' : 'var(--mute)' }}>{d}</div>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {step === 2 && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+              {[
+                ['origin', 'Origin ZIP / city', 'e.g. 32226 Jacksonville FL'],
+                ['dest', 'Destination ZIP / city', 'e.g. 38103 Memphis TN'],
+                ['weight', 'Total weight (lbs)', 'e.g. 28,000'],
+                ['pickup', 'Pickup date', 'MM/DD/YYYY'],
+              ].map(([k, l, p]) => (
+                <div key={k} className="field">
+                  <label className="label" htmlFor={`field-${k}`}>{l}</label>
+                  <input id={`field-${k}`} className="input" placeholder={p} value={data[k]} onChange={e => set(k, e.target.value)} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {step === 3 && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+              {[
+                ['name', 'Full name', 'Marcus Halloran'],
+                ['company', 'Company', 'Coastal Paper & Packaging'],
+                ['email', 'Work email', 'marcus@coastalpp.com'],
+                ['phone', 'Phone', '+1 904 555 0142'],
+              ].map(([k, l, p]) => (
+                <div key={k} className="field">
+                  <label className="label" htmlFor={`field-${k}`}>{l}</label>
+                  <input id={`field-${k}`} className="input" placeholder={p} value={data[k] || ''} onChange={e => set(k, e.target.value)} />
+                </div>
+              ))}
+              <div style={{ gridColumn: 'span 2', marginTop: 16, padding: 24, background: 'var(--paper-2)', border: '1px solid var(--rule)' }}>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--brass-deep)', marginBottom: 12 }}>QUOTE SUMMARY</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+                  {[['Service', data.service], ['Origin', data.origin || '—'], ['Destination', data.dest || '—'], ['Pickup', data.pickup || '—']].map(([l, v], i) => (
+                    <div key={i}>
+                      <div className="mono" style={{ fontSize: 9, color: 'var(--mute)' }}>{l.toUpperCase()}</div>
+                      <div style={{ fontFamily: 'Manrope', fontWeight: 600, fontSize: 14, marginTop: 4 }}>{v}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {step === 4 && (
+            <div style={{ textAlign: 'center', padding: '60px 0' }}>
+              <div style={{ fontSize: 80, color: 'var(--brass)', marginBottom: 24, lineHeight: 1 }} aria-hidden="true">✓</div>
+              <h2 style={{ fontSize: 48, marginBottom: 16 }}>Quote on its way.</h2>
+              <p className="lead" style={{ color: 'var(--mute)', marginBottom: 40 }}>Our dispatcher will email you a written quote within 4 business hours.</p>
+              <button className="btn btn-ink" onClick={() => setRoute('home')}>Back to home →</button>
+            </div>
+          )}
+
+          {step < 4 && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 48, paddingTop: 32, borderTop: '1px solid var(--rule)' }}>
+              {step > 1
+                ? <button className="btn btn-ghost-ink" onClick={() => setStep(s => s - 1)}>← Back</button>
+                : <div></div>
+              }
+              <button className="btn btn-primary" onClick={() => setStep(s => s + 1)}>
+                {step === 3 ? 'Submit quote request →' : 'Continue →'}
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── ABOUT ── */
+const About = ({ setRoute }) => (
+  <div>
+    <section className="section section-dark" style={{ padding: '100px 32px 80px' }}>
+      <div className="section-inner">
+        <div className="eyebrow eyebrow-dark" style={{ marginBottom: 24 }}>ABOUT INFINITY</div>
+        <h1 style={{ fontSize: 88, color: 'var(--paper)', maxWidth: 1000 }}>
+          Eighteen years.<br />One family.<br /><span style={{ color: 'var(--brass)' }}>Same standards.</span>
+        </h1>
+      </div>
+    </section>
+
+    <section className="section section-cream">
+      <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80 }}>
+        <div>
+          <div className="eyebrow" style={{ marginBottom: 16 }}>OUR STORY</div>
+          <h2 style={{ fontSize: 48 }}>Started with one truck. Still answer the phone the same way.</h2>
+        </div>
+        <div className="body" style={{ fontSize: 18, lineHeight: 1.7 }}>
+          <p style={{ marginTop: 0 }}>Tom Halloran bought his first tractor in 2008, parked it at his uncle's lot in north Jacksonville, and started running paper out of the port. Eighteen years later, his son Marcus dispatches from the same office building on the same Port Terminal Drive.</p>
+          <p>The fleet has grown to 43 trucks. The family has not. Tom is still on the phone with customers when something goes wrong, which is exactly the same number of times as it did when there was one truck: rarely, and never twice for the same reason.</p>
+          <p>We don't have a sales team. We don't have a marketing department. We have dispatchers who pick up before the third ring and drivers who have been with us long enough that we know their kids' names.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="section section-stone">
+      <div className="section-inner">
+        <div className="eyebrow" style={{ marginBottom: 16 }}>OPERATING PRINCIPLES</div>
+        <h2 style={{ fontSize: 56, marginBottom: 64, maxWidth: 720 }}>Four rules. We've never broken them.</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, borderTop: '1px solid var(--rule)' }}>
+          {[
+            ['01', 'Answer the phone', 'Every call within three rings, business hours and after. The dispatcher who answers can speak for the company.'],
+            ['02', 'Tell the truth early', 'If a load is going to be late, the customer hears it from us before they see it on a screen. Always.'],
+            ['03', 'Pay drivers well', 'W-2 employees, full benefits, paid vacation. Driver retention is customer retention.'],
+            ['04', 'Stay small enough to mean it', "We turn down loads we can't do right. The fleet grows when the operating standard can grow with it."],
+          ].map(([n, t, d], i) => (
+            <div key={i} style={{
+              padding: '40px 0',
+              paddingRight: i % 2 === 0 ? 40 : 0,
+              paddingLeft: i % 2 === 1 ? 40 : 0,
+              borderBottom: '1px solid var(--rule)',
+              borderRight: i % 2 === 0 ? '1px solid var(--rule)' : 'none',
+            }}>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--brass-deep)', marginBottom: 16 }}>PRINCIPLE {n}</div>
+              <h3 style={{ fontSize: 32, marginBottom: 14 }}>{t}</h3>
+              <p className="body" style={{ margin: 0 }}>{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section section-dark">
+      <div className="section-inner">
+        <div className="eyebrow eyebrow-dark" style={{ marginBottom: 16 }}>LEADERSHIP</div>
+        <h2 style={{ fontSize: 56, color: 'var(--paper)', marginBottom: 64 }}>The people who pick up the phone.</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }}>
+          {[
+            ['Tom Halloran', 'Founder & President', '18 yrs · started with one truck'],
+            ['Marcus Halloran', 'Operations Director', '11 yrs · former driver'],
+            ['Renée Cobbs', 'Senior Dispatcher', '14 yrs · runs the night desk'],
+          ].map(([n, t, d], i) => (
+            <div key={i}>
+              <div style={{ width: '100%', aspectRatio: '4/5', background: 'rgba(244,241,234,0.06)', border: '1px solid var(--rule-dark)', marginBottom: 20 }} aria-label={`Portrait placeholder for ${n}`}></div>
+              <div style={{ fontFamily: 'Manrope', fontWeight: 700, fontSize: 22, color: 'var(--paper)' }}>{n}</div>
+              <div className="mono" style={{ fontSize: 10, color: 'var(--brass)', marginTop: 6 }}>{t.toUpperCase()}</div>
+              <div className="body" style={{ fontSize: 13, color: 'rgba(244,241,234,0.6)', marginTop: 8 }}>{d}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+);
+
+/* ── CAREERS ── */
+const Careers = ({ setRoute }) => {
+  const jobs = [
+    { t: 'OTR Driver — Class A CDL', loc: 'Jacksonville FL', type: 'Full time · W-2', pay: '$78–92k/yr + benefits' },
+    { t: 'Cross-Dock Forklift Operator', loc: 'Jacksonville FL', type: 'Full time · 2nd shift', pay: '$22–26/hr + benefits' },
+    { t: 'Dispatcher — Night Desk', loc: 'Jacksonville FL', type: 'Full time · 18:00–06:00', pay: '$58–72k/yr + benefits' },
+    { t: 'Diesel Mechanic', loc: 'Jacksonville FL', type: 'Full time · 1st shift', pay: '$32–42/hr + benefits' },
+    { t: 'Local Box-Truck Driver', loc: 'Atlanta GA', type: 'Full time · home daily', pay: '$58–66k/yr + benefits' },
+  ];
+
+  return (
+    <div>
+      <section className="section section-dark" style={{ padding: '100px 32px 80px' }}>
+        <div className="section-inner">
+          <div className="eyebrow eyebrow-dark" style={{ marginBottom: 24 }}>CAREERS</div>
+          <h1 style={{ fontSize: 88, color: 'var(--paper)', maxWidth: 1000 }}>
+            Drive for a company<br />that pays you like<br />you matter.
+          </h1>
+          <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', maxWidth: 720, marginTop: 32 }}>
+            W-2 only. Full benefits day one. Two weeks paid vacation accrued from your first paycheck. Average tenure: 7.4 years.
+          </p>
+        </div>
+      </section>
+
+      <section className="section section-cream">
+        <div className="section-inner">
+          <div className="eyebrow" style={{ marginBottom: 16 }}>OPEN POSITIONS</div>
+          <h2 style={{ fontSize: 48, marginBottom: 48 }}>5 roles. All in-house.</h2>
+          {jobs.map((j, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '2fr 1fr 1fr 1fr auto',
+                gap: 32,
+                padding: '28px 0',
+                borderTop: '1px solid var(--rule)',
+                alignItems: 'center',
+                cursor: 'pointer',
+                transition: 'background 0.15s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(14,13,11,0.03)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ fontFamily: 'Manrope', fontWeight: 700, fontSize: 22, letterSpacing: '-0.02em' }}>{j.t}</div>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--mute)' }}>{j.loc.toUpperCase()}</div>
+              <div className="body" style={{ fontSize: 14 }}>{j.type}</div>
+              <div className="body" style={{ fontSize: 14, color: 'var(--brass-deep)' }}>{j.pay}</div>
+              <button className="btn btn-ink">Apply →</button>
+            </div>
+          ))}
+          <div style={{ borderTop: '1px solid var(--rule)' }}></div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── CASE STUDY ── */
+const CaseStudy = ({ setRoute }) => (
+  <div>
+    <section className="section section-cream" style={{ padding: '80px 32px 40px' }}>
+      <div className="section-inner" style={{ maxWidth: 920 }}>
+        <div className="eyebrow" style={{ marginBottom: 16 }}>CASE STUDY · COASTAL PAPER &amp; PACKAGING</div>
+        <h1 style={{ fontSize: 72, marginBottom: 40 }}>11 years, 14,000 loads, zero lost shipments.</h1>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)' }}>
+          {[['11', 'Years served'], ['14,000+', 'Loads moved'], ['99.4%', 'On-time'], ['0', 'Lost shipments']].map(([n, l], i) => (
+            <div key={i} style={{ padding: '32px 0', paddingRight: i < 3 ? 32 : 0, borderRight: i < 3 ? '1px solid var(--rule)' : 'none' }}>
+              <div className="stat-num" style={{ fontSize: 48 }}>{n}</div>
+              <div className="stat-label">{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section section-cream" style={{ paddingTop: 40 }}>
+      <div className="section-inner" style={{ maxWidth: 720 }}>
+        <p className="lead" style={{ marginBottom: 32, marginTop: 0 }}>
+          In 2014, Coastal Paper &amp; Packaging moved a third of their southeast volume to Infinity. Eleven years later, they've moved more.
+        </p>
+        <div className="body" style={{ fontSize: 18, lineHeight: 1.7 }}>
+          <p style={{ marginTop: 0 }}>Coastal runs roughly 1,300 loads a year through Infinity — paper rolls out of their Palatka mill destined for converters in Atlanta, Charlotte, Memphis, and Dallas. The freight is heavy, time-sensitive, and weather-sensitive: a wet load is a written-off load.</p>
+          <p>The relationship started with a single dedicated lane: Palatka to Atlanta, three trucks a week. Within eighteen months Coastal had moved their entire southeast spine to Infinity. The reason, according to VP of Logistics Linda Hartwell, was simple: "they answer the phone."</p>
+          <h3 style={{ fontSize: 32, marginTop: 48, marginBottom: 16, letterSpacing: '-0.02em' }}>What changed</h3>
+          <p>Before Infinity, Coastal worked with three carriers and a broker. Visibility was thin, late notices arrived after the fact, and damage claims took months. After the switch, claims dropped to zero across an eleven-year window — not because freight magically stopped getting damaged, but because Infinity caught it on the dock and re-ran the load before Coastal's customer was inconvenienced.</p>
+          <h3 style={{ fontSize: 32, marginTop: 48, marginBottom: 16, letterSpacing: '-0.02em' }}>How we operate the account</h3>
+          <p>Two dispatchers know Coastal's lanes by heart — Renée on the night desk and Marcus on days. There's a standing 7am Monday call. Tracking pings hit Coastal's TMS hourly via EDI 214. Rate adjustments happen in writing, with 30 days notice, once a year. Nothing about the relationship is novel. That's the point.</p>
+        </div>
+        <blockquote style={{
+          fontFamily: 'Fraunces', fontSize: 32, lineHeight: 1.3,
+          letterSpacing: '-0.015em', margin: '64px 0 64px 0',
+          paddingLeft: 32, borderLeft: '3px solid var(--brass)',
+        }}>
+          "We've stopped thinking about southeast freight. That's the whole compliment."
+          <div className="mono" style={{ fontSize: 11, color: 'var(--mute)', marginTop: 24, letterSpacing: '0.24em' }}>— LINDA HARTWELL, VP LOGISTICS</div>
+        </blockquote>
+        <button className="btn btn-ink" onClick={() => setRoute('quote')}>Get a quote →</button>
+      </div>
+    </section>
+  </div>
+);
+
+/* ── CONTACT ── */
+const Contact = ({ setRoute }) => {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <div>
+      <section className="section section-dark" style={{ padding: '80px 32px 60px' }}>
+        <div className="section-inner">
+          <div className="eyebrow eyebrow-dark" style={{ marginBottom: 16 }}>CONTACT</div>
+          <h1 style={{ fontSize: 88, color: 'var(--paper)' }}>Talk to dispatch.</h1>
+        </div>
+      </section>
+
+      <section className="section section-cream">
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }}>
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 24 }}>WAYS TO REACH US</div>
+            {[
+              ['Phone (24/7)', '+1 904 555 0142'],
+              ['Dispatch email', 'dispatch@infinity-tl.com'],
+              ['Quote request', 'quotes@infinity-tl.com'],
+              ['Office', '1820 Port Terminal Dr\nJacksonville FL 32226'],
+            ].map(([l, v], i) => (
+              <div key={i} style={{ padding: '20px 0', borderTop: '1px solid var(--rule)' }}>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--brass-deep)', marginBottom: 8 }}>{l.toUpperCase()}</div>
+                <div style={{ fontFamily: 'Manrope', fontWeight: 600, fontSize: 18, whiteSpace: 'pre-line' }}>{v}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="card" style={{ padding: 48 }}>
+            {!sent ? (
+              <>
+                <h2 style={{ fontSize: 32, marginBottom: 28 }}>Send a message</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+                  <div className="field">
+                    <label className="label" htmlFor="contact-name">Name</label>
+                    <input id="contact-name" className="input" placeholder="Your name" />
+                  </div>
+                  <div className="field">
+                    <label className="label" htmlFor="contact-company">Company</label>
+                    <input id="contact-company" className="input" placeholder="Company name" />
+                  </div>
+                  <div className="field">
+                    <label className="label" htmlFor="contact-email">Email</label>
+                    <input id="contact-email" className="input" type="email" placeholder="you@company.com" />
+                  </div>
+                  <div className="field">
+                    <label className="label" htmlFor="contact-phone">Phone</label>
+                    <input id="contact-phone" className="input" type="tel" placeholder="+1 555 000 0000" />
+                  </div>
+                </div>
+                <div className="field" style={{ marginBottom: 28 }}>
+                  <label className="label" htmlFor="contact-message">Message</label>
+                  <textarea
+                    id="contact-message"
+                    className="input"
+                    rows="5"
+                    placeholder="What can we help you move?"
+                    style={{ resize: 'vertical', fontFamily: 'Manrope' }}
+                  />
+                </div>
+                <button className="btn btn-primary" onClick={() => setSent(true)}>Send message →</button>
+              </>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                <div style={{ fontSize: 64, color: 'var(--brass)', marginBottom: 16, lineHeight: 1 }} aria-hidden="true">✓</div>
+                <h2 style={{ fontSize: 32, marginBottom: 12 }}>Message sent.</h2>
+                <p className="body" style={{ margin: 0 }}>Dispatch will reply within the business day.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/* ── APP (router) ── */
+const App = () => {
+  const [route, setRoute] = useState(() => {
+    const hash = location.hash.slice(1);
+    return hash || 'home';
+  });
+
+  useEffect(() => {
+    const onHash = () => {
+      const hash = location.hash.slice(1);
+      setRoute(hash || 'home');
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  useEffect(() => {
+    if (location.hash !== '#' + route) location.hash = '#' + route;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [route]);
+
+  const pages = { home: Home, services: Services, network: Network, tracking: Tracking, quote: Quote, about: About, careers: Careers, case: CaseStudy, contact: Contact };
+  const Page = pages[route] || Home;
+
+  return (
+    <div>
+      <Nav route={route} setRoute={setRoute} />
+      <main>
+        <Page setRoute={setRoute} />
+      </main>
+      <Footer setRoute={setRoute} />
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
