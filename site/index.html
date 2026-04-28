@@ -233,8 +233,8 @@ const Footer = ({ setRoute }) => (
         </div>
         <div className="footer-col">
           <h4>Operations</h4>
-          <a>1820 Port Terminal Dr</a>
-          <a>Jacksonville FL 32226</a>
+          <a>4539 N 22nd St Ste R</a>
+          <a>Phoenix, AZ 85016</a>
           <a href="tel:+19045550142">+1 904 555 0142</a>
           <a href="mailto:dispatch@infinity-tl.com">dispatch@infinity-tl.com</a>
         </div>
@@ -259,7 +259,7 @@ const Home = ({ setRoute }) => {
         <div className="hero-glow" aria-hidden="true"></div>
         <div className="hero-inner">
           <div className="fade-up">
-            <div className="eyebrow eyebrow-dark" style={{ marginBottom: 28 }}>EST. 2008 · JACKSONVILLE FL</div>
+            <div className="eyebrow eyebrow-dark" style={{ marginBottom: 28 }}>EST. 2008 · PHOENIX AZ</div>
             <h1 style={{ fontSize: 92, color: 'var(--paper)', marginBottom: 32 }}>
               Move it,<br />on time,<br /><span style={{ color: 'var(--brass)' }}>without drama.</span>
             </h1>
@@ -335,7 +335,7 @@ const Home = ({ setRoute }) => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
             {[
               ['01', 'Long-haul dry van', "Coast-to-coast on dedicated lanes. 53' trailers, dual drivers on time-sensitive freight, ELD-tracked end to end.", 'FROM $2.40/MI'],
-              ['02', 'Cross-dock & consolidation', '120,000 sq ft Jacksonville facility. LTL inbound, FTL outbound. We sort, you save a leg.', '24-HR TURN'],
+              ['02', 'Cross-dock & consolidation', '120,000 sq ft Phoenix facility. LTL inbound, FTL outbound. We sort, you save a leg.', '24-HR TURN'],
               ['03', 'Last-mile distribution', 'Southeast metros from a single dispatcher. Box trucks and sprinters, white-glove on request.', '7 STATES'],
               ['04', 'Port drayage', 'JAXPORT, Savannah, Charleston. Bonded, chassis pool access, customs partner on call.', '3 PORTS'],
             ].map(([n, t, d, m], i) => (
@@ -368,7 +368,7 @@ const Home = ({ setRoute }) => {
             <div className="eyebrow eyebrow-dark" style={{ marginBottom: 16 }}>THE NETWORK</div>
             <h2 style={{ fontSize: 56, color: 'var(--paper)', marginBottom: 28 }}>Southeast spine, national reach.</h2>
             <p className="lead" style={{ color: 'rgba(244,241,234,0.7)', marginBottom: 32 }}>
-              Hub in Jacksonville. Drop yards in Atlanta, Memphis, and Charlotte. Partner network covers 48 contiguous states with same-week capacity.
+              Hub in Phoenix. Drop yards in Dallas, Atlanta, and Memphis. Partner network covers 48 contiguous states with same-week capacity.
             </p>
             <button className="btn btn-primary" onClick={() => setRoute('network')}>Explore the map →</button>
           </div>
@@ -376,11 +376,11 @@ const Home = ({ setRoute }) => {
             <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%' }}>
               <path d="M40 120 L 80 90 L 140 80 L 200 75 L 270 78 L 340 88 L 360 110 L 355 150 L 340 180 L 310 210 L 270 225 L 220 230 L 170 225 L 130 215 L 90 195 L 60 170 L 40 145 Z"
                 fill="rgba(244,241,234,0.04)" stroke="rgba(244,241,234,0.18)" strokeWidth="1" />
-              <line x1="280" y1="200" x2="240" y2="170" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 3s linear infinite' }} />
-              <line x1="280" y1="200" x2="200" y2="150" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 4s linear infinite' }} />
-              <line x1="280" y1="200" x2="150" y2="180" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 5s linear infinite' }} />
-              <line x1="280" y1="200" x2="100" y2="140" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 6s linear infinite' }} />
-              {[[280,200,'JAX',true],[240,170,'ATL'],[200,150,'MEM'],[260,170,'CHA'],[150,180,'DAL'],[100,140,'PHX'],[330,140,'NYC']].map(([x,y,l,hub],i) => (
+              <line x1="110" y1="165" x2="240" y2="170" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 3s linear infinite' }} />
+              <line x1="110" y1="165" x2="200" y2="150" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 4s linear infinite' }} />
+              <line x1="110" y1="165" x2="150" y2="180" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 5s linear infinite' }} />
+              <line x1="110" y1="165" x2="70" y2="140" stroke="var(--brass)" strokeWidth="1.5" strokeDasharray="4 4" style={{ animation: 'dash 6s linear infinite' }} />
+              {[[110,165,'PHX',true],[240,170,'ATL'],[200,150,'MEM'],[150,180,'DAL'],[70,140,'LAX'],[280,200,'JAX'],[330,140,'NYC']].map(([x,y,l,hub],i) => (
                 <g key={i}>
                   <circle cx={x} cy={y} r={hub ? 6 : 3} fill="var(--brass)" />
                   {hub && <circle cx={x} cy={y} r="6" fill="none" stroke="var(--brass)" strokeWidth="1" style={{ animation: 'pulseDot 2s ease-in-out infinite' }} />}
@@ -439,7 +439,7 @@ const Services = ({ setRoute }) => {
     },
     {
       n: '02', t: 'Cross-dock & consolidation',
-      lead: '120,000 sq ft Jacksonville facility, 24-hour turn standard.',
+      lead: '120,000 sq ft Phoenix facility, 24-hour turn standard.',
       detail: 'Twelve dock doors, dedicated forklift crew on two shifts. We sort LTL inbound and rebuild as FTL outbound, or hold for scheduled pickup. Camera-monitored, climate-zoned for sensitive goods.',
       bullets: ['12 dock doors · 24-hr turn', '120,000 sq ft secured', 'WMS integration via EDI 856', 'Climate zone for sensitive freight'],
       price: '24-HR TURN',
@@ -447,15 +447,15 @@ const Services = ({ setRoute }) => {
     {
       n: '03', t: 'Last-mile distribution',
       lead: 'Southeast metros, single dispatcher, white-glove on request.',
-      detail: "Coverage across FL, GA, AL, SC, NC, TN, and southern VA. Mix of 26' box trucks and Sprinter vans. Liftgate on every box truck. White-glove service includes inside delivery, debris removal, and basic assembly.",
-      bullets: ['7 states from JAX hub', '14 box trucks · 9 sprinters', 'White-glove available', 'Photo + signature POD'],
+      detail: "Coverage across AZ, NM, CO, NV, UT, CA, and southern TX. Mix of 26' box trucks and Sprinter vans. Liftgate on every box truck. White-glove service includes inside delivery, debris removal, and basic assembly.",
+      bullets: ['7 states from PHX hub', '14 box trucks · 9 sprinters', 'White-glove available', 'Photo + signature POD'],
       price: '7 STATES',
     },
     {
       n: '04', t: 'Port drayage',
-      lead: 'JAXPORT, Savannah, Charleston. Bonded, chassis-pool, customs-ready.',
+      lead: 'Long Beach, Seattle, Houston. Bonded, chassis-pool, customs-ready.',
       detail: 'Sixteen years of port experience. Bonded carrier status, established chassis pool relationships, and a customs broker on call. We handle import flips, export pre-pulls, and bonded moves to inland CFS.',
-      bullets: ['JAXPORT · Savannah · Charleston', 'Bonded carrier (C-TPAT)', 'Chassis pool access', 'Customs broker partnership'],
+      bullets: ['Long Beach · Seattle · Houston', 'Bonded carrier (C-TPAT)', 'Chassis pool access', 'Customs broker partnership'],
       price: '3 PORTS',
     },
   ];
@@ -515,16 +515,16 @@ const Services = ({ setRoute }) => {
 const Network = ({ setRoute }) => {
   const [hover, setHover] = useState(null);
   const cities = [
-    { x: 280, y: 200, name: 'Jacksonville', code: 'JAX', hub: 'PRIMARY HUB', detail: '120k sq ft · 12 docks · 43 trucks' },
-    { x: 245, y: 175, name: 'Atlanta', code: 'ATL', hub: 'DROP YARD', detail: '24-hr swap point · 80 trailer capacity' },
-    { x: 215, y: 155, name: 'Memphis', code: 'MEM', hub: 'DROP YARD', detail: 'Cross-river relay · 48 trailer capacity' },
-    { x: 270, y: 175, name: 'Charlotte', code: 'CLT', hub: 'DROP YARD', detail: 'Carolinas hub · 56 trailer capacity' },
-    { x: 305, y: 195, name: 'Savannah', code: 'SAV', hub: 'PORT', detail: 'Drayage · bonded · chassis pool' },
-    { x: 290, y: 215, name: 'Charleston', code: 'CHS', hub: 'PORT', detail: 'Drayage · bonded · same-day flips' },
-    { x: 165, y: 195, name: 'Dallas', code: 'DAL', hub: 'PARTNER', detail: 'Long-haul interchange' },
-    { x: 110, y: 165, name: 'Phoenix', code: 'PHX', hub: 'PARTNER', detail: 'Western relay point' },
+    { x: 110, y: 165, name: 'Phoenix', code: 'PHX', hub: 'PRIMARY HUB', detail: '120k sq ft · 12 docks · 43 trucks' },
+    { x: 165, y: 195, name: 'Dallas', code: 'DAL', hub: 'DROP YARD', detail: '24-hr swap point · 80 trailer capacity' },
+    { x: 245, y: 175, name: 'Atlanta', code: 'ATL', hub: 'DROP YARD', detail: 'Southeast relay · 48 trailer capacity' },
+    { x: 215, y: 155, name: 'Memphis', code: 'MEM', hub: 'DROP YARD', detail: 'Cross-river relay · 56 trailer capacity' },
+    { x: 70, y: 140, name: 'Los Angeles', code: 'LAX', hub: 'PORT', detail: 'Drayage · bonded · chassis pool' },
+    { x: 195, y: 215, name: 'Houston', code: 'HOU', hub: 'PORT', detail: 'Drayage · bonded · same-day flips' },
+    { x: 280, y: 200, name: 'Jacksonville', code: 'JAX', hub: 'PARTNER', detail: 'Southeast deliveries' },
+    { x: 270, y: 175, name: 'Charlotte', code: 'CLT', hub: 'PARTNER', detail: 'Carolinas hub' },
     { x: 335, y: 130, name: 'New York', code: 'NYC', hub: 'PARTNER', detail: 'Northeast deliveries' },
-    { x: 70, y: 140, name: 'Los Angeles', code: 'LAX', hub: 'PARTNER', detail: 'West coast freight + port' },
+    { x: 85, y: 95, name: 'Seattle', code: 'SEA', hub: 'PARTNER', detail: 'Pacific Northwest + port' },
   ];
 
   return (
@@ -613,9 +613,9 @@ const Tracking = ({ setRoute }) => {
   const events = [
     { t: '06:14', d: 'Apr 28', loc: 'Macon, GA', label: 'In transit', detail: 'I-75 N · 412 mi remaining', live: true },
     { t: '23:48', d: 'Apr 27', loc: 'Valdosta, GA', label: 'Driver swap', detail: 'Team driver handoff at Pilot 442' },
-    { t: '17:02', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Departed hub', detail: 'Sealed trailer #INF-T2241' },
-    { t: '14:30', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Picked up', detail: 'Coastal Paper · Dock 7 · BOL signed' },
-    { t: '08:00', d: 'Apr 27', loc: 'Jacksonville, FL', label: 'Pickup scheduled', detail: '14:00–14:30 window' },
+    { t: '17:02', d: 'Apr 27', loc: 'Phoenix, AZ', label: 'Departed hub', detail: 'Sealed trailer #INF-T2241' },
+    { t: '14:30', d: 'Apr 27', loc: 'Phoenix, AZ', label: 'Picked up', detail: 'Coastal Paper · Dock 7 · BOL signed' },
+    { t: '08:00', d: 'Apr 27', loc: 'Phoenix, AZ', label: 'Pickup scheduled', detail: '14:00–14:30 window' },
   ];
 
   return (
@@ -651,7 +651,7 @@ const Tracking = ({ setRoute }) => {
               </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, padding: '20px 0', borderTop: '1px solid var(--rule-dark)', borderBottom: '1px solid var(--rule-dark)' }}>
-              {[['ORIGIN', 'Jacksonville FL'], ['DESTINATION', 'Memphis TN'], ['ETA', 'Apr 28 · 14:30'], ['DRIVER', 'M. Halloran']].map(([l, v], i) => (
+              {[['ORIGIN', 'Phoenix AZ'], ['DESTINATION', 'Dallas TX'], ['ETA', 'Apr 28 · 14:30'], ['DRIVER', 'M. Halloran']].map(([l, v], i) => (
                 <div key={i} style={{ paddingRight: i < 3 ? 16 : 0 }}>
                   <div className="mono" style={{ fontSize: 9, color: 'rgba(244,241,234,0.5)' }}>{l}</div>
                   <div style={{ fontFamily: 'Manrope', fontWeight: 600, fontSize: 14, color: 'var(--paper)', marginTop: 6 }}>{v}</div>
@@ -668,9 +668,9 @@ const Tracking = ({ setRoute }) => {
                 <circle cx="180" cy="110" r="8" fill="var(--brass)" />
                 <circle cx="180" cy="110" r="16" fill="none" stroke="var(--brass)" strokeWidth="1.5" strokeOpacity="0.5"
                   style={{ animation: 'pulseDot 1.5s ease-in-out infinite' }} />
-                <text x="60" y="172" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">JAX</text>
-                <text x="340" y="50" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">MEM</text>
-                <text x="180" y="98" fill="var(--brass)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">TRUCK · MACON</text>
+                <text x="60" y="172" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">PHX</text>
+                <text x="340" y="50" fill="rgba(244,241,234,0.7)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">DAL</text>
+                <text x="180" y="98" fill="var(--brass)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="2">TRUCK · TUCSON</text>
               </svg>
             </div>
           </div>
@@ -738,7 +738,7 @@ const Quote = ({ setRoute }) => {
                 ['long-haul', 'Long-haul dry van', "53' trailer · coast to coast"],
                 ['cross-dock', 'Cross-dock', '120k sq ft · 24-hr turn'],
                 ['last-mile', 'Last-mile', '7 states · liftgate'],
-                ['drayage', 'Port drayage', 'JAX · SAV · CHS'],
+                ['drayage', 'Port drayage', 'LGB · SEA · HOU'],
               ].map(([k, t, d]) => (
                 <button
                   key={k}
@@ -764,7 +764,7 @@ const Quote = ({ setRoute }) => {
           {step === 2 && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
               {[
-                ['origin', 'Origin ZIP / city', 'e.g. 32226 Jacksonville FL'],
+                ['origin', 'Origin ZIP / city', 'e.g. 85016 Phoenix AZ'],
                 ['dest', 'Destination ZIP / city', 'e.g. 38103 Memphis TN'],
                 ['weight', 'Total weight (lbs)', 'e.g. 28,000'],
                 ['pickup', 'Pickup date', 'MM/DD/YYYY'],
@@ -849,7 +849,7 @@ const About = ({ setRoute }) => (
           <h2 style={{ fontSize: 48 }}>Started with one truck. Still answer the phone the same way.</h2>
         </div>
         <div className="body" style={{ fontSize: 18, lineHeight: 1.7 }}>
-          <p style={{ marginTop: 0 }}>Tom Halloran bought his first tractor in 2008, parked it at his uncle's lot in north Jacksonville, and started running paper out of the port. Eighteen years later, his son Marcus dispatches from the same office building on the same Port Terminal Drive.</p>
+          <p style={{ marginTop: 0 }}>Tom Halloran bought his first tractor in 2008, parked it at his uncle's yard in north Phoenix, and started running freight out of the valley. Eighteen years later, his son Marcus dispatches from the same building on N 22nd St.</p>
           <p>The fleet has grown to 43 trucks. The family has not. Tom is still on the phone with customers when something goes wrong, which is exactly the same number of times as it did when there was one truck: rarely, and never twice for the same reason.</p>
           <p>We don't have a sales team. We don't have a marketing department. We have dispatchers who pick up before the third ring and drivers who have been with us long enough that we know their kids' names.</p>
         </div>
@@ -909,11 +909,11 @@ const About = ({ setRoute }) => (
 /* ── CAREERS ── */
 const Careers = ({ setRoute }) => {
   const jobs = [
-    { t: 'OTR Driver — Class A CDL', loc: 'Jacksonville FL', type: 'Full time · W-2', pay: '$78–92k/yr + benefits' },
-    { t: 'Cross-Dock Forklift Operator', loc: 'Jacksonville FL', type: 'Full time · 2nd shift', pay: '$22–26/hr + benefits' },
-    { t: 'Dispatcher — Night Desk', loc: 'Jacksonville FL', type: 'Full time · 18:00–06:00', pay: '$58–72k/yr + benefits' },
-    { t: 'Diesel Mechanic', loc: 'Jacksonville FL', type: 'Full time · 1st shift', pay: '$32–42/hr + benefits' },
-    { t: 'Local Box-Truck Driver', loc: 'Atlanta GA', type: 'Full time · home daily', pay: '$58–66k/yr + benefits' },
+    { t: 'OTR Driver — Class A CDL', loc: 'Phoenix AZ', type: 'Full time · W-2', pay: '$78–92k/yr + benefits' },
+    { t: 'Cross-Dock Forklift Operator', loc: 'Phoenix AZ', type: 'Full time · 2nd shift', pay: '$22–26/hr + benefits' },
+    { t: 'Dispatcher — Night Desk', loc: 'Phoenix AZ', type: 'Full time · 18:00–06:00', pay: '$58–72k/yr + benefits' },
+    { t: 'Diesel Mechanic', loc: 'Phoenix AZ', type: 'Full time · 1st shift', pay: '$32–42/hr + benefits' },
+    { t: 'Local Box-Truck Driver', loc: 'Dallas TX', type: 'Full time · home daily', pay: '$58–66k/yr + benefits' },
   ];
 
   return (
@@ -1030,7 +1030,7 @@ const Contact = ({ setRoute }) => {
               ['Phone (24/7)', '+1 904 555 0142'],
               ['Dispatch email', 'dispatch@infinity-tl.com'],
               ['Quote request', 'quotes@infinity-tl.com'],
-              ['Office', '1820 Port Terminal Dr\nJacksonville FL 32226'],
+              ['Office', '4539 N 22nd St Ste R\nPhoenix, AZ 85016'],
             ].map(([l, v], i) => (
               <div key={i} style={{ padding: '20px 0', borderTop: '1px solid var(--rule)' }}>
                 <div className="mono" style={{ fontSize: 10, color: 'var(--brass-deep)', marginBottom: 8 }}>{l.toUpperCase()}</div>
